@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passeios da Maria | Viagens com Alma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f172a; 
+            --accent: #ff6b6b;  
+            --secondary: #0ea5e9; 
+        }
+        body { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.5)), url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .destination-card:hover .overlay { opacity: 1; }
+        .destination-card img { transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .destination-card:hover img { transform: scale(1.15); }
+
+        .btn-coral {
+            background-color: var(--accent);
+            transition: all 0.3s ease;
+        }
+        .btn-coral:hover {
+            background-color: #fa5252;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(255, 107, 107, 0.4);
+        }
+
+        .testimonial-glow {
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.1);
+        }
+
+        .hidden-page { display: none; }
+    </style>
+</head>
+<body class="bg-white text-slate-900 scroll-smooth">
+
+    <!-- Navegação -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center" id="nav-container">
+            <a href="javascript:void(0)" onclick="showPage('home')" class="flex items-center space-x-2">
+                <span class="text-2xl font-black tracking-tighter text-slate-900 uppercase italic">Passeios da <span class="text-sky-500 not-italic">Maria</span></span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-8 font-semibold text-xs uppercase tracking-widest">
+                <a href="javascript:void(0)" onclick="showPage('home')" class="hover:text-sky-500 transition-colors">Início</a>
+                <a href="javascript:void(0)" onclick="showPage('7dias')" class="hover:text-sky-500 transition-colors">7 Dias</a>
+                <a href="javascript:void(0)" onclick="showPage('cruzeiros')" class="hover:text-sky-500 transition-colors">Cruzeiros</a>
+                <a href="#testemunhos" class="hover:text-sky-500 transition-colors">Testemunhos</a>
+                <a href="#contacto" class="btn-coral text-white px-7 py-3 rounded-full shadow-lg">Planear com a Maria</a>
+            </div>
+            <button class="lg:hidden text-2xl" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- PÁGINA INICIAL -->
+    <main id="page-home" class="page-content">
+        <!-- Hero Section -->
+        <header class="hero-bg h-screen flex items-center justify-center text-center px-4">
+            <div class="max-w-5xl text-white">
+                <span class="inline-block px-4 py-1 mb-6 border border-white/30 rounded-full text-xs font-bold uppercase tracking-[0.3em] backdrop-blur-sm">Viagens Personalizadas</span>
+                <h1 class="text-5xl md:text-8xl font-black mb-8 leading-tight">A Maria leva-te a <span class="italic text-sky-300">conhecer o mundo</span>.</h1>
+                <p class="text-lg md:text-xl mb-12 font-light max-w-2xl mx-auto leading-relaxed opacity-90">Não somos apenas uma agência. Somos a tua companhia de confiança para roteiros autênticos e inesquecíveis.</p>
+                
+                <div class="bg-white p-2 rounded-2xl md:rounded-full shadow-2xl flex flex-col md:flex-row gap-2 items-center max-w-4xl mx-auto text-slate-800">
+                    <div class="flex-1 w-full flex items-center px-6 py-3 border-b md:border-b-0 md:border-r border-slate-100">
+                        <span class="mr-3 text-sky-500">📍</span>
+                        <input type="text" placeholder="Para onde queres ir?" class="w-full focus:outline-none font-medium">
+                    </div>
+                    <div class="flex-1 w-full flex items-center px-6 py-3 border-b md:border-b-0 md:border-r border-slate-100">
+                        <span class="mr-3 text-sky-500">📅</span>
+                        <input type="text" placeholder="Quando?" onfocus="(this.type='date')" class="w-full focus:outline-none font-medium">
+                    </div>
+                    <button onclick="showAlert('A Maria está a preparar as melhores opções para ti...')" class="w-full md:w-auto btn-coral text-white px-10 py-4 rounded-xl md:rounded-full font-bold">
+                        Descobrir
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Destinos Populares (da página inicial) -->
+        <section id="destinos" class="py-24 px-6 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                <div>
+                    <span class="text-sky-500 font-bold tracking-widest text-xs uppercase">Roteiros da Maria</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-2">Destaques do Mês</h2>
+                </div>
+                <div class="flex gap-4">
+                    <button onclick="showPage('7dias')" class="text-sm font-bold text-sky-600 hover:underline">Ver Viagens de 7 Dias →</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="destination-card relative group h-[400px] rounded-[2rem] overflow-hidden shadow-xl cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1590001140517-7393439e6074?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 p-8 flex flex-col justify-end text-white">
+                        <h3 class="text-2xl font-bold">Açores</h3>
+                        <p class="text-sky-300">Portugal</p>
+                    </div>
+                </div>
+                <div class="destination-card relative group h-[400px] rounded-[2rem] overflow-hidden shadow-xl cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 p-8 flex flex-col justify-end text-white">
+                        <h3 class="text-2xl font-bold">Vietname</h3>
+                        <p class="text-sky-300">Ásia</p>
+                    </div>
+                </div>
+                <div class="destination-card relative group h-[400px] rounded-[2rem] overflow-hidden shadow-xl cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 p-8 flex flex-col justify-end text-white">
+                        <h3 class="text-2xl font-bold">Santorini</h3>
+                        <p class="text-sky-300">Grécia</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PÁGINA: VIAGENS DE 7 DIAS -->
+    <section id="page-7dias" class="page-content hidden-page pt-32 pb-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-coral-500 font-bold tracking-widest text-xs uppercase text-orange-500">Itinerários Completos</span>
+            <h2 class="text-4xl md:text-6xl font-bold mt-2">Uma Semana de Magia</h2>
+            <p class="text-slate-500 mt-4 max-w-2xl mx-auto">A Maria desenhou estes roteiros de 7 dias para que aproveites cada segundo, sem pressas, mas com tudo o que é essencial.</p>
+        </div>
+
+        <div class="space-y-12">
+            <!-- Roteiro 1 -->
+            <div class="flex flex-col lg:flex-row bg-slate-50 rounded-[3rem] overflow-hidden shadow-lg border border-slate-100">
+                <div class="lg:w-1/2 h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1520175480921-4edfa06830b1?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Costa Amalfitana">
+                </div>
+                <div class="lg:w-1/2 p-12 flex flex-col justify-center">
+                    <div class="flex items-center space-x-2 text-sky-500 font-bold text-sm mb-4">
+                        <span>🗓️ 7 Dias / 6 Noites</span>
+                        <span>•</span>
+                        <span>Itália</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">Costa Amalfitana: O Sonho Italiano</h3>
+                    <p class="text-slate-600 mb-6">De Positano a Ravello, um passeio pelas vilas coloridas suspensas sobre o mar Tirreno. Inclui tour de barco privado e aula de culinária.</p>
+                    <ul class="grid grid-cols-2 gap-4 mb-8 text-sm text-slate-500">
+                        <li>✅ Hotéis Boutique</li>
+                        <li>✅ Guia Local em Português</li>
+                        <li>✅ Degustação de Limoncello</li>
+                        <li>✅ Transfers Privados</li>
+                    </ul>
+                    <div class="flex items-center justify-between border-t border-slate-200 pt-6">
+                        <span class="text-2xl font-black">Desde 1.850€</span>
+                        <button onclick="showAlert('A Maria vai enviar-te o PDF deste roteiro!')" class="btn-coral text-white px-8 py-3 rounded-full font-bold">Ver Itinerário</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roteiro 2 -->
+            <div class="flex flex-col lg:flex-row-reverse bg-slate-50 rounded-[3rem] overflow-hidden shadow-lg border border-slate-100">
+                <div class="lg:w-1/2 h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1547234935-80c7145ec969?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Marrocos">
+                </div>
+                <div class="lg:w-1/2 p-12 flex flex-col justify-center">
+                    <div class="flex items-center space-x-2 text-sky-500 font-bold text-sm mb-4">
+                        <span>🗓️ 7 Dias / 6 Noites</span>
+                        <span>•</span>
+                        <span>Marrocos</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">Marraquexe e Deserto: Cores e Estrelas</h3>
+                    <p class="text-slate-600 mb-6">Perde-te nos souks de Marraquexe e dorme sob o céu estrelado do deserto do Saara num acampamento de luxo.</p>
+                    <ul class="grid grid-cols-2 gap-4 mb-8 text-sm text-slate-500">
+                        <li>✅ Noite em Tenda Luxury</li>
+                        <li>✅ Jantar Típico no Deserto</li>
+                        <li>✅ Passeio de Camelo ao Pôr do Sol</li>
+                        <li>✅ Riad de Charme</li>
+                    </ul>
+                    <div class="flex items-center justify-between border-t border-slate-200 pt-6">
+                        <span class="text-2xl font-black">Desde 1.290€</span>
+                        <button onclick="showAlert('Prepara a tua túnica, a Maria trata do resto!')" class="btn-coral text-white px-8 py-3 rounded-full font-bold">Ver Itinerário</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PÁGINA: CRUZEIROS -->
+    <section id="page-cruzeiros" class="page-content hidden-page pt-32 pb-24 px-6 bg-sky-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-sky-600 font-bold tracking-widest text-xs uppercase">Navega com a Maria</span>
+                <h2 class="text-4xl md:text-6xl font-bold mt-2">Cruzeiros Selecionados</h2>
+                <p class="text-slate-500 mt-4 max-w-2xl mx-auto">Escolhi as melhores frotas e as rotas mais fascinantes para que o teu hotel te leve a um destino novo todas as manhãs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Cruzeiro 1 -->
+                <div class="bg-white rounded-[3rem] overflow-hidden shadow-2xl transition-transform hover:-translate-y-2">
+                    <div class="relative h-72">
+                        <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover">
+                        <div class="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-full text-xs font-bold text-sky-600">MEDITERRÂNEO CLÁSSICO</div>
+                    </div>
+                    <div class="p-10">
+                        <h3 class="text-2xl font-bold mb-4">Tesouros do Adriático</h3>
+                        <p class="text-slate-500 mb-6">Veneza, Dubrovnik, Kotor e as ilhas Gregas num único cruzeiro de luxo com sistema tudo incluído.</p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="bg-slate-100 px-3 py-1 rounded-full text-[10px] font-bold text-slate-500 uppercase">Tudo Incluído</span>
+                            <span class="bg-slate-100 px-3 py-1 rounded-full text-[10px] font-bold text-slate-500 uppercase">Wi-Fi Grátis</span>
+                            <span class="bg-slate-100 px-3 py-1 rounded-full text-[10px] font-bold text-slate-500 uppercase">Crédito a Bordo</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase">Preço por pessoa</p>
+                                <span class="text-3xl font-black text-sky-600">980€</span>
+                            </div>
+                            <button onclick="showAlert('Vais adorar este navio! A Maria já lá esteve.')" class="bg-sky-600 text-white px-8 py-3 rounded-full font-bold hover:bg-sky-700 transition">Saber Mais</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cruzeiro 2 -->
+                <div class="bg-white rounded-[3rem] overflow-hidden shadow-2xl transition-transform hover:-translate-y-2">
+                    <div class="relative h-72">
+                        <img src="https://images.unsplash.com/photo-1500463959177-e0869687df26?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover">
+                        <div class="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-full text-xs font-bold text-sky-600">CARIBE EXÓTICO</div>
+                    </div>
+                    <div class="p-10">
+                        <h3 class="text-2xl font-bold mb-4">Bahamas e Ilhas Privadas</h3>
+                        <p class="text-slate-500 mb-6">Parte de Miami para uma aventura tropical com paragens em praias de areia branca e águas azul-turquesa.</p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="bg-slate-100 px-3 py-1 rounded-full text-[10px] font-bold text-slate-500 uppercase">Bebidas Premium</span>
+                            <span class="bg-slate-100 px-3 py-1 rounded-full text-[10px] font-bold text-slate-500 uppercase">Espetáculos Broadway</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase">Preço por pessoa</p>
+                                <span class="text-3xl font-black text-sky-600">1.450€</span>
+                            </div>
+                            <button onclick="showAlert('Prepara o protetor solar, as Maldivas do Caribe esperam por ti!')" class="bg-sky-600 text-white px-8 py-3 rounded-full font-bold hover:bg-sky-700 transition">Saber Mais</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECÇÕES COMUNS (Testemunhos e Contacto) -->
+    <div id="common-sections">
+        <!-- Testemunhos Section -->
+        <section id="testemunhos" class="py-24 bg-slate-50 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <span class="text-sky-500 font-bold tracking-widest text-xs uppercase">Viajantes Felizes</span>
+                <h2 class="text-4xl font-bold mt-2 mb-16">Quem já viajou com a Maria</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-10 rounded-[2.5rem] testimonial-glow relative text-left">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <img src="https://i.pravatar.cc/150?u=ana" class="w-12 h-12 rounded-full">
+                            <div><h4 class="font-bold">Ana Silva</h4><p class="text-xs text-slate-400 uppercase">Açores</p></div>
+                        </div>
+                        <p class="text-slate-600 italic leading-relaxed">"A Maria pensou em tudo. Recomendo vivamente!"</p>
+                    </div>
+                    <!-- Outros testemunhos simplificados para brevidade -->
+                    <div class="bg-white p-10 rounded-[2.5rem] testimonial-glow relative text-left scale-105 z-10 shadow-xl">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <img src="https://i.pravatar.cc/150?u=ricardo" class="w-12 h-12 rounded-full">
+                            <div><h4 class="font-bold">Ricardo G.</h4><p class="text-xs text-slate-400 uppercase">Cruzeiros</p></div>
+                        </div>
+                        <p class="text-slate-600 italic leading-relaxed">"O meu primeiro cruzeiro foi com a Maria e foi inesquecível. Tudo impecável!"</p>
+                    </div>
+                    <div class="bg-white p-10 rounded-[2.5rem] testimonial-glow relative text-left text-left">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <img src="https://i.pravatar.cc/150?u=marta" class="w-12 h-12 rounded-full">
+                            <div><h4 class="font-bold">Marta C.</h4><p class="text-xs text-slate-400 uppercase">Itália</p></div>
+                        </div>
+                        <p class="text-slate-600 italic leading-relaxed">"O roteiro de 7 dias pela Itália foi o melhor que já fiz."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto" class="py-24 px-6">
+            <div class="max-w-6xl mx-auto flex flex-col lg:flex-row bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl">
+                <div class="lg:w-1/3 p-12 bg-sky-900 text-white">
+                    <h2 class="text-3xl font-bold mb-6">Fale com a Maria</h2>
+                    <p class="opacity-80 mb-10">Diga-me o seu destino de sonho e eu trato do resto.</p>
+                    <p class="text-sm">📞 +351 912 345 678</p>
+                    <p class="text-sm">✉️ maria@passeiosdamaria.pt</p>
+                </div>
+                <div class="lg:w-2/3 p-12 bg-white">
+                    <form onsubmit="event.preventDefault(); showAlert('A Maria já recebeu a tua mensagem!')" class="space-y-6">
+                        <input type="text" placeholder="Teu Nome" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-sky-500 outline-none" required>
+                        <textarea placeholder="Que viagem queres planear?" rows="4" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-sky-500 outline-none"></textarea>
+                        <button class="btn-coral text-white w-full py-5 rounded-2xl font-bold text-lg">Pedir Orçamento Gratuito</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Custom Toast Notification -->
+    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-[100] opacity-0 translate-y-10 transition-all duration-500 pointer-events-none">
+        <div class="bg-slate-900 text-white px-8 py-4 rounded-full shadow-2xl flex items-center space-x-3">
+            <span class="text-sky-400">✨</span>
+            <span id="toast-text" class="text-sm font-medium"></span>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-slate-950 text-white pt-20 pb-10 px-6 text-center">
+        <span class="text-3xl font-black uppercase italic tracking-tighter mb-6 block italic">Passeios da <span class="text-sky-500 not-italic">Maria</span></span>
+        <p class="text-slate-500 text-sm">© 2024 Passeios da Maria. Viagens com alma.</p>
+    </footer>
+
+    <script>
+        function showAlert(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').innerText = msg;
+            toast.classList.remove('opacity-0', 'translate-y-10');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-10');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 5000);
+        }
+
+        function showPage(pageId) {
+            // Esconde todas as páginas
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden-page'));
+            
+            // Mostra a página selecionada
+            document.getElementById('page-' + pageId).classList.remove('hidden-page');
+            
+            // Scroll para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Fecha menu mobile se estiver aberto
+            if(window.innerWidth < 1024) toggleMenu(true);
+        }
+
+        function toggleMenu(forceClose = false) {
+            // Simplificado: apenas um alert para o protótipo
+            if(!forceClose) showAlert("Menu mobile em desenvolvimento. Experimente os links superiores!");
+        }
+
+        window.addEventListener('scroll', () => {
+            const navContainer = document.getElementById('nav-container');
+            if (window.scrollY > 80) {
+                navContainer.classList.remove('h-20');
+                navContainer.classList.add('h-16');
+            } else {
+                navContainer.classList.remove('h-16');
+                navContainer.classList.add('h-20');
+            }
+        });
+    </script>
+</body>
+</html>
