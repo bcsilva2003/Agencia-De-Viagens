@@ -365,5 +365,19 @@
             showToast('A enviar pedido para a Maria...');
         });
     </script>
+
+    🖼️ Logótipo e Imagens
+
+Para utilizar o logótipo alojado neste repositório em websites externos ou no próprio código HTML, deve utilizar o link direto (Raw) para evitar problemas de carregamento.
+
+Link Direto do Logo
+
+O link principal para a imagem LOGO.jpg é:
+https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpg
+
+Como usar no HTML:
+
+<img src="[https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpg](https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpg)" alt="Logo Passeios da Maria">
+
 </body>
 </html>
