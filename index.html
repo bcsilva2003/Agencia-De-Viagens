@@ -86,21 +86,21 @@
                 <div class="bg-white p-2 rounded-2xl md:rounded-full shadow-2xl flex flex-col md:flex-row gap-2 items-center max-w-4xl mx-auto text-slate-800">
                     <div class="flex-1 w-full flex items-center px-6 py-3 border-b md:border-b-0 md:border-r border-slate-100">
                         <span class="mr-3 text-sky-500">📍</span>
-                        <input type="text" placeholder="Para onde queres ir?" class="w-full focus:outline-none font-medium">
+                        <input type="text" id="hero-destino" placeholder="Para onde queres ir?" class="w-full focus:outline-none font-medium">
                     </div>
                     <div class="flex-1 w-full flex items-center px-6 py-3 border-b md:border-b-0 md:border-r border-slate-100">
                         <span class="mr-3 text-sky-500">📅</span>
-                        <input type="text" placeholder="Quando?" onfocus="(this.type='date')" class="w-full focus:outline-none font-medium">
+                        <input type="text" id="hero-data" placeholder="Quando?" onfocus="(this.type='date')" class="w-full focus:outline-none font-medium">
                     </div>
-                    <button onclick="showAlert('Estamos a preparar as tuas férias ideais!')" class="w-full md:w-auto btn-coral text-white px-10 py-4 rounded-xl md:rounded-full font-bold">
+                    <button onclick="preFillAndContact()" class="w-full md:w-auto btn-coral text-white px-10 py-4 rounded-xl md:rounded-full font-bold">
                         Descobrir
                     </button>
                 </div>
             </div>
         </header>
 
-        <!-- Destinos Populares -->
-        <section id="destinos" class="py-24 px-6 max-w-7xl mx-auto">
+        <!-- Sugestão de Cruzeiro em Destaque no Início -->
+        <section class="py-24 px-6 max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
                 <div>
                     <span class="text-sky-500 font-bold tracking-widest text-xs uppercase">Sugestões Selecionadas</span>
@@ -197,64 +197,95 @@
                         </ul>
                     </div>
 
-                    <div>
-                        <p class="font-bold text-slate-900">🚌 Saídas de:</p>
-                        <p class="text-xs leading-relaxed opacity-70 italic">
-                            Lisboa, Loures, Odivelas, Almada, Amadora, Sete Rios, Campo Grande, Alverca, V. F. Xira, Carregado, Torres Novas, Leiria e Coimbra.
-                        </p>
-                    </div>
-
                     <div class="pt-4 border-t border-slate-100 text-center">
                         <p class="text-xl font-black text-sky-900 mb-4">Apenas 119€ por pessoa</p>
                         <div class="bg-slate-900 text-white p-4 rounded-2xl">
                             <p class="text-[10px] uppercase tracking-widest opacity-60 mb-1">Reserve Já:</p>
                             <p class="font-bold text-base md:text-lg">📞 219 597 638 | 962 838 175</p>
                             <p class="font-bold text-base md:text-lg">📱 939 385 492</p>
-                            <p class="text-[10px] mt-2 opacity-50 italic">RNAVT 11763 | Lugares Limitados!</p>
                         </div>
+                        <button onclick="closeModal(); document.getElementById('contacto').scrollIntoView();" class="mt-4 text-sky-600 font-bold hover:underline">Pedir Reserva por Email</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Contacto -->
-    <section id="contacto" class="py-24 px-6">
+    <!-- Contacto e Pedido de Orçamento -->
+    <section id="contacto" class="py-24 px-6 bg-slate-50">
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl">
+            <!-- Informações à Esquerda -->
             <div class="lg:w-1/3 p-12 bg-sky-900 text-white">
-                <h2 class="text-3xl font-bold mb-6">Fale com a Maria</h2>
-                <p class="opacity-80 mb-10">Diga-me o seu destino de sonho e eu trato do resto.</p>
+                <h2 class="text-3xl font-bold mb-6 italic font-serif">Fale com a Maria</h2>
+                <p class="opacity-80 mb-10 leading-relaxed">Diga-me o seu destino de sonho e eu trato de todos os detalhes para a sua viagem ser inesquecível.</p>
                 <div class="space-y-6">
                     <div>
                         <p class="text-xs uppercase tracking-widest opacity-60 mb-2">Telefones</p>
-                        <p class="font-bold">219 597 638</p>
-                        <p class="font-bold">962 838 175</p>
-                        <p class="font-bold">939 385 492</p>
+                        <p class="font-bold text-lg">219 597 638</p>
+                        <p class="font-bold text-lg">962 838 175</p>
+                        <p class="font-bold text-lg text-sky-300">939 385 492</p>
                     </div>
                     <div>
-                        <p class="text-xs uppercase tracking-widest opacity-60 mb-2">Emails</p>
+                        <p class="text-xs uppercase tracking-widest opacity-60 mb-2">Emails de Reserva</p>
                         <p class="font-bold text-sm">maria@passeiosdamaria.pt</p>
-                        <p class="font-bold text-sm">reservas.passeiosdamaria@gmail.com</p>
+                        <p class="font-bold text-sm text-sky-300">reservas.passeiosdamaria@gmail.com</p>
+                    </div>
+                    <div class="pt-6 border-t border-white/10">
+                        <p class="text-[10px] uppercase tracking-tighter opacity-50">RNAVT 11763</p>
                     </div>
                 </div>
             </div>
+
+            <!-- Formulário Real -->
             <div class="lg:w-2/3 p-12 bg-white">
-                <form onsubmit="event.preventDefault(); showAlert('Mensagem enviada! Entraremos em contacto em breve.')" class="space-y-6">
+                <h3 class="text-2xl font-bold text-slate-800 mb-8">Pedir Orçamento Gratuito</h3>
+                
+                <!-- INTEGRAÇÃO COM FORMSPREE -->
+                <form action="https://formspree.io/f/reservas.passeiosdamaria@gmail.com" method="POST" class="space-y-6" id="quote-form">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <input type="text" placeholder="Teu Nome" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500" required>
-                        <input type="email" placeholder="Teu Email" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500" required>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-slate-400 uppercase">Nome Completo</label>
+                            <input type="text" name="nome" placeholder="Ex: João Silva" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-slate-400 uppercase">Teu Email</label>
+                            <input type="email" name="_replyto" placeholder="Ex: joao@email.com" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all" required>
+                        </div>
                     </div>
-                    <textarea placeholder="Que viagem queres planear?" rows="4" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500"></textarea>
-                    <button class="btn-coral text-white w-full py-5 rounded-2xl font-bold text-lg uppercase tracking-widest shadow-xl">Enviar Pedido</button>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-slate-400 uppercase">Telemóvel</label>
+                            <input type="tel" name="telefone" placeholder="9xx xxx xxx" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-slate-400 uppercase">Destino Pretendido</label>
+                            <input type="text" name="destino" id="form-destino" placeholder="Ex: Cruzeiro Douro / Açores" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all" required>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-slate-400 uppercase">Detalhes Adicionais</label>
+                        <textarea name="mensagem" id="form-mensagem" placeholder="Diga-nos o número de pessoas, datas preferenciais ou pedidos especiais..." rows="4" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all"></textarea>
+                    </div>
+
+                    <!-- Configurações do Formspree -->
+                    <input type="hidden" name="_subject" value="Novo Pedido de Orçamento - Website Passeios da Maria">
+                    <input type="hidden" name="_next" value="https://passeiosdamaria.pt/sucesso"> <!-- Podes alterar este link se tiveres uma página de sucesso -->
+                    
+                    <button type="submit" class="btn-coral text-white w-full py-5 rounded-2xl font-bold text-lg uppercase tracking-widest shadow-xl">
+                        Enviar Pedido de Orçamento
+                    </button>
+                    <p class="text-[10px] text-center text-slate-400 italic">Ao enviar, concorda em ser contactado pela nossa equipa para fins de orçamento.</p>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Toast Notification -->
+    <!-- Toast de Confirmação (Simulado) -->
     <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-[100] opacity-0 translate-y-10 transition-all duration-500 pointer-events-none">
         <div class="bg-slate-900 text-white px-8 py-4 rounded-full shadow-2xl flex items-center space-x-3">
-            <span class="text-sky-400 text-xl">✨</span>
+            <span class="text-sky-400 text-xl">🚀</span>
             <span id="toast-text" class="text-sm font-medium"></span>
         </div>
     </div>
@@ -262,11 +293,31 @@
     <!-- Rodapé -->
     <footer class="bg-slate-950 text-white py-16 px-6 text-center">
         <img src="https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpg" alt="Logo" class="h-16 mx-auto mb-6 opacity-90 rounded-lg bg-white p-2" onerror="this.style.display='none'">
-        <p class="text-slate-400 text-xs uppercase tracking-[0.2em] mb-2">© 2024-2026 Passeios da Maria | Viagens com Alma</p>
-        <p class="text-slate-600 text-[10px]">RNAVT 11763</p>
+        <div class="mb-8">
+            <p class="text-slate-400 text-xs uppercase tracking-[0.2em] mb-2 font-bold">Contactos Oficiais</p>
+            <p class="text-sm">maria@passeiosdamaria.pt | reservas.passeiosdamaria@gmail.com</p>
+            <p class="text-sm mt-1">219 597 638 | 962 838 175 | 939 385 492</p>
+        </div>
+        <div class="border-t border-white/5 pt-8">
+            <p class="text-slate-600 text-[10px] uppercase tracking-widest">© 2024-2026 Passeios da Maria | RNAVT 11763</p>
+        </div>
     </footer>
 
     <script>
+        // Função para preencher automaticamente o formulário a partir da barra de pesquisa hero
+        function preFillAndContact() {
+            const destino = document.getElementById('hero-destino').value;
+            const data = document.getElementById('hero-data').value;
+            
+            if (destino) {
+                document.getElementById('form-destino').value = destino;
+                document.getElementById('form-mensagem').value = `Pretendo informações para viagem em ${data || 'data a definir'}.`;
+            }
+            
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+            showAlert('Por favor, preencha os seus dados abaixo para enviarmos o orçamento.');
+        }
+
         function showAlert(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-text').innerText = msg;
@@ -315,6 +366,7 @@
             }
         });
 
+        // Fechar modal ao clicar fora
         document.getElementById('cruise-modal').addEventListener('click', (e) => {
             if (e.target.id === 'cruise-modal') closeModal();
         });
