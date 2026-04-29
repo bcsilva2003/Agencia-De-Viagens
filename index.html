@@ -46,7 +46,7 @@
         
         #logo-img { transition: all 0.3s ease; }
 
-        /* Modal Styles */
+        /* Estilos do Modal */
         #cruise-modal {
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
@@ -67,7 +67,6 @@
             
             <div class="hidden lg:flex items-center space-x-8 font-semibold text-xs uppercase tracking-widest">
                 <a href="javascript:void(0)" onclick="showPage('home')" class="hover:text-sky-500 transition-colors">Início</a>
-                <a href="javascript:void(0)" onclick="showPage('7dias')" class="hover:text-sky-500 transition-colors">7 Dias</a>
                 <a href="javascript:void(0)" onclick="showPage('cruzeiros')" class="hover:text-sky-500 transition-colors">Cruzeiros</a>
                 <a href="#contacto" class="btn-coral text-white px-7 py-3 rounded-full shadow-lg text-[10px]">Planear Viagem</a>
             </div>
@@ -75,260 +74,237 @@
         </div>
     </nav>
 
-    <!-- PÁGINA INICIAL -->
-    <main id="page-home" class="page-content">
-        <header class="hero-bg h-screen flex items-center justify-center text-center px-4">
-            <div class="max-w-5xl text-white">
-                <span class="inline-block px-4 py-1 mb-6 border border-white/30 rounded-full text-xs font-bold uppercase tracking-[0.3em] backdrop-blur-sm">Viagens Personalizadas</span>
-                <h1 class="text-5xl md:text-8xl font-black mb-8 leading-tight">A Maria leva-te a <span class="italic text-sky-300">conhecer o mundo</span>.</h1>
-                <p class="text-lg md:text-xl mb-12 font-light max-w-2xl mx-auto leading-relaxed opacity-90">Roteiros autênticos desenhados para viajantes que procuram a alma de cada destino.</p>
-                
-                <div class="bg-white p-2 rounded-2xl md:rounded-full shadow-2xl flex flex-col md:flex-row gap-2 items-center max-w-4xl mx-auto text-slate-800">
-                    <div class="flex-1 w-full flex items-center px-6 py-3 border-b md:border-b-0 md:border-r border-slate-100">
-                        <span class="mr-3 text-sky-500">📍</span>
-                        <input type="text" id="hero-destino" placeholder="Para onde queres ir?" class="w-full focus:outline-none font-medium">
-                    </div>
-                    <div class="flex-1 w-full flex items-center px-6 py-3 border-b md:border-b-0 md:border-r border-slate-100">
-                        <span class="mr-3 text-sky-500">📅</span>
-                        <input type="text" id="hero-data" placeholder="Quando?" onfocus="(this.type='date')" class="w-full focus:outline-none font-medium">
-                    </div>
-                    <button onclick="preFillAndContact()" class="w-full md:w-auto btn-coral text-white px-10 py-4 rounded-xl md:rounded-full font-bold">
-                        Descobrir
-                    </button>
-                </div>
-            </div>
-        </header>
-
-        <!-- Sugestão de Cruzeiro em Destaque no Início -->
-        <section class="py-24 px-6 max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-                <div>
-                    <span class="text-sky-500 font-bold tracking-widest text-xs uppercase">Sugestões Selecionadas</span>
-                    <h2 class="text-4xl md:text-5xl font-bold mt-2">Destaques do Mês</h2>
-                </div>
-                <button onclick="showPage('cruzeiros')" class="text-sm font-bold text-sky-600 hover:underline tracking-widest uppercase">Ver Ofertas →</button>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="destination-card relative group h-[450px] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer" onclick="showPage('cruzeiros')">
-                    <img src="https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/0c383296b277449571b3b7c4fa4a3473924044fc/DIA21.jpg" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent p-8 flex flex-col justify-end text-white">
-                        <h3 class="text-2xl font-bold">Douro</h3>
-                        <p class="text-sky-300">Cruzeiro Especial Junho</p>
-                    </div>
-                </div>
-                <div class="destination-card relative group h-[450px] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1590001140517-7393439e6074?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent p-8 flex flex-col justify-end text-white">
-                        <h3 class="text-2xl font-bold">Açores</h3>
-                        <p class="text-sky-300">Portugal Místico</p>
-                    </div>
-                </div>
-                <div class="destination-card relative group h-[450px] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent p-8 flex flex-col justify-end text-white">
-                        <h3 class="text-2xl font-bold">Santorini</h3>
-                        <p class="text-sky-300">Pôr do Sol Infinito</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- PÁGINA: CRUZEIROS -->
-    <section id="page-cruzeiros" class="page-content hidden-page pt-32 pb-24 px-6 bg-sky-50 min-h-screen">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="text-sky-600 font-bold tracking-widest text-xs uppercase">Navega com a Maria</span>
-                <h2 class="text-4xl md:text-6xl font-bold mt-2">Experiências Fluviais</h2>
-            </div>
-
-            <!-- Oferta Especial Douro -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white rounded-[3rem] p-8 md:p-12 shadow-xl border border-sky-100">
-                <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg" onclick="openModal()">
-                    <img src="https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/0c383296b277449571b3b7c4fa4a3473924044fc/DIA21.jpg" alt="Cruzeiro no Douro 21 de Junho" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors flex items-center justify-center">
-                        <span class="bg-white/90 text-slate-900 px-6 py-2 rounded-full font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">Ver Detalhes</span>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-3xl font-bold mb-4">🚢 CRUZEIRO NO DOURO – UMA EXPERIÊNCIA INESQUECÍVEL! 🍷</h3>
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="bg-slate-100 p-3 rounded-xl">
-                            <p class="text-xs text-slate-500 uppercase font-bold">Data</p>
-                            <p class="font-bold text-slate-800">21 de Junho, 2026</p>
+    <!-- CONTEÚDO PRINCIPAL (SPA) -->
+    <main>
+        <!-- PÁGINA INICIAL -->
+        <div id="page-home" class="page-content">
+            <header class="hero-bg h-screen flex items-center justify-center text-center px-4">
+                <div class="max-w-5xl text-white">
+                    <span class="inline-block px-4 py-1 mb-6 border border-white/30 rounded-full text-xs font-bold uppercase tracking-[0.3em] backdrop-blur-sm">Viagens Personalizadas</span>
+                    <h1 class="text-5xl md:text-8xl font-black mb-8 leading-tight">A Maria leva-te a <span class="italic text-sky-300">conhecer o mundo</span>.</h1>
+                    <p class="text-lg md:text-xl mb-12 font-light max-w-2xl mx-auto leading-relaxed opacity-90">Roteiros autênticos desenhados para viajantes que procuram a alma de cada destino.</p>
+                    
+                    <div class="bg-white p-2 rounded-2xl md:rounded-full shadow-2xl flex flex-col md:flex-row gap-2 items-center max-w-4xl mx-auto text-slate-800">
+                        <div class="flex-1 w-full flex items-center px-6 py-3 border-b md:border-b-0 md:border-r border-slate-100">
+                            <span class="mr-3 text-sky-500">📍</span>
+                            <input type="text" id="hero-destino" placeholder="Para onde queres ir?" class="w-full focus:outline-none font-medium">
                         </div>
-                        <div class="bg-sky-50 p-3 rounded-xl border border-sky-100">
-                            <p class="text-xs text-sky-600 uppercase font-bold">Preço</p>
-                            <p class="font-black text-2xl text-sky-900">119€ <span class="text-sm font-normal text-slate-500">/pessoa</span></p>
+                        <div class="flex-1 w-full flex items-center px-6 py-3 border-b md:border-b-0 md:border-r border-slate-100">
+                            <span class="mr-3 text-sky-500">📅</span>
+                            <input type="text" id="hero-data" placeholder="Quando?" onfocus="(this.type='date')" class="w-full focus:outline-none font-medium">
+                        </div>
+                        <button onclick="preFillAndContact()" class="w-full md:w-auto btn-coral text-white px-10 py-4 rounded-xl md:rounded-full font-bold">
+                            Descobrir
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Destaques -->
+            <section class="py-24 px-6 max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                    <div>
+                        <span class="text-sky-500 font-bold tracking-widest text-xs uppercase">Sugestões Selecionadas</span>
+                        <h2 class="text-4xl md:text-5xl font-bold mt-2 text-slate-900">Destaques do Mês</h2>
+                    </div>
+                    <button onclick="showPage('cruzeiros')" class="text-sm font-bold text-sky-600 hover:underline tracking-widest uppercase">Ver Ofertas →</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card Cruzeiro -->
+                    <div class="destination-card relative group h-[450px] rounded-[2.5rem] overflow-hidden shadow-2xl cursor-pointer" onclick="showPage('cruzeiros')">
+                        <img src="https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/0c383296b277449571b3b7c4fa4a3473924044fc/DIA21.jpg" class="w-full h-full object-cover" alt="Douro">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent p-8 flex flex-col justify-end text-white">
+                            <h3 class="text-2xl font-bold">Douro</h3>
+                            <p class="text-sky-300 font-semibold">Cruzeiro Especial 2026</p>
                         </div>
                     </div>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
-                        Descubra a magia do Vale do Douro num dia único, cheio de paisagens deslumbrantes, boa comida e momentos relaxantes a bordo!
-                    </p>
-                    <button onclick="openModal()" class="bg-slate-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all flex items-center gap-2">
-                        Ver Itinerário Completo
-                    </button>
+                    <!-- Outros Cards Exemplo -->
+                    <div class="destination-card relative group h-[450px] rounded-[2.5rem] overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1590001140517-7393439e6074?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="Açores">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent p-8 flex flex-col justify-end text-white">
+                            <h3 class="text-2xl font-bold">Açores</h3>
+                            <p class="text-sky-300">Natureza Pura</p>
+                        </div>
+                    </div>
+                    <div class="destination-card relative group h-[450px] rounded-[2.5rem] overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover" alt="Santorini">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent p-8 flex flex-col justify-end text-white">
+                            <h3 class="text-2xl font-bold">Santorini</h3>
+                            <p class="text-sky-300">Escapadinha Romântica</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PÁGINA: CRUZEIROS -->
+        <div id="page-cruzeiros" class="page-content hidden-page pt-32 pb-24 px-6 bg-sky-50 min-h-screen">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-sky-600 font-bold tracking-widest text-xs uppercase">Navega com a Maria</span>
+                    <h2 class="text-4xl md:text-6xl font-bold mt-2">Cruzeiro no Douro</h2>
+                </div>
+
+                <!-- Oferta Detalhada -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white rounded-[3rem] p-8 md:p-12 shadow-xl border border-sky-100">
+                    <div class="relative group cursor-pointer overflow-hidden rounded-2xl shadow-lg" onclick="openModal()">
+                        <img src="https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/0c383296b277449571b3b7c4fa4a3473924044fc/DIA21.jpg" alt="Cruzeiro Douro" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors flex items-center justify-center">
+                            <span class="bg-white/90 text-slate-900 px-6 py-2 rounded-full font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity uppercase text-xs tracking-widest">Ver Itinerário</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4">🚢✨ CRUZEIRO NO DOURO – UMA EXPERIÊNCIA INESQUECÍVEL! 🍷🌄</h3>
+                        <div class="flex flex-wrap items-center gap-4 mb-6">
+                            <div class="bg-slate-100 p-3 rounded-xl">
+                                <p class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">📅 Data</p>
+                                <p class="font-bold text-slate-800">21 de Junho de 2026</p>
+                            </div>
+                            <div class="bg-sky-50 p-3 rounded-xl border border-sky-100 text-sky-900">
+                                <p class="text-[10px] uppercase font-bold tracking-tighter">💰 Preço</p>
+                                <p class="font-black text-2xl">119€ <span class="text-xs font-normal text-slate-500">/pessoa</span></p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 mb-6 leading-relaxed">
+                            Descubra a magia do Vale do Douro num dia único, cheio de paisagens deslumbrantes, boa comida e momentos relaxantes a bordo! 🌿
+                        </p>
+                        <p class="text-sky-600 font-bold mb-8 italic">🌊 Barca d’Alva → Peso da Régua</p>
+                        <button onclick="openModal()" class="bg-slate-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-lg flex items-center gap-3">
+                            Informação Completa & Saídas
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Modal de Informações do Cruzeiro -->
+    <!-- MODAL DE DETALHES -->
     <div id="cruise-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/90 backdrop-blur-sm opacity-0 invisible">
-        <div class="bg-white w-full max-w-4xl rounded-[2.5rem] shadow-2xl relative overflow-hidden flex flex-col md:flex-row">
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-white/80 p-2 rounded-full hover:bg-white shadow-md">✕</button>
+        <div class="bg-white w-full max-w-5xl rounded-[2.5rem] shadow-2xl relative overflow-hidden flex flex-col md:flex-row">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 bg-white/80 p-2 rounded-full hover:bg-white shadow-md transition-all">✕</button>
             
             <div class="md:w-1/2 h-64 md:h-auto bg-cover bg-center" style="background-image: url('https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/0c383296b277449571b3b7c4fa4a3473924044fc/DIA21.jpg')"></div>
             
-            <div class="md:w-1/2 p-8 md:p-10 modal-content">
-                <h4 class="text-2xl font-black text-slate-900 mb-4 font-serif uppercase tracking-tight">CRUZEIRO NO DOURO 🍷</h4>
+            <div class="md:w-1/2 p-8 md:p-10 modal-content overflow-y-auto">
+                <h4 class="text-2xl font-black text-slate-900 mb-4 font-serif uppercase tracking-tight">Cruzeiro no Douro 🚢</h4>
                 
-                <div class="space-y-4 text-sm text-slate-700">
-                    <p class="leading-relaxed">Embarque incrível entre Barca d’Alva e Peso da Régua, atravessando barragens e vinhas em socalcos.</p>
-                    
+                <div class="space-y-6 text-sm text-slate-700">
+                    <p class="leading-relaxed border-l-4 border-sky-500 pl-4 italic">
+                        Embarque num incrível cruzeiro entre Barca d’Alva e Peso da Régua, atravessando as impressionantes barragens do Rio Douro.
+                    </p>
+
                     <div>
-                        <p class="font-bold text-slate-900">🧳 O que está incluído:</p>
-                        <ul class="list-disc list-inside pl-2 space-y-1 opacity-80">
-                            <li>Transporte em autocarro de turismo</li>
-                            <li>Guia acompanhante</li>
-                            <li>Pequeno almoço e almoço a bordo 🍽️</li>
-                            <li>Barragens do Pocinho e Bagaúste</li>
+                        <p class="font-bold text-slate-900 mb-2">🧳 O que está incluído:</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2">✔️ <span class="opacity-80">Transporte confortável em autocarro de turismo</span></li>
+                            <li class="flex items-center gap-2">✔️ <span class="opacity-80">Guia acompanhante durante toda a viagem</span></li>
+                            <li class="flex items-center gap-2">✔️ <span class="opacity-80">Pequeno almoço e almoço a bordo 🍽️</span></li>
+                            <li class="flex items-center gap-2">✔️ <span class="opacity-80">Passagem pelas barragens do Pocinho e Bagaúste</span></li>
                         </ul>
                     </div>
 
-                    <div class="pt-4 border-t border-slate-100 text-center">
-                        <p class="text-xl font-black text-sky-900 mb-4">Apenas 119€ por pessoa</p>
-                        <div class="bg-slate-900 text-white p-4 rounded-2xl">
-                            <p class="text-[10px] uppercase tracking-widest opacity-60 mb-1">Reserve Já:</p>
-                            <p class="font-bold text-base md:text-lg">📞 219 597 638 | 962 838 175</p>
-                            <p class="font-bold text-base md:text-lg">📱 939 385 492</p>
+                    <div>
+                        <p class="font-bold text-slate-900 mb-2">🚌 Localidades de Saída:</p>
+                        <p class="text-xs leading-relaxed opacity-70">
+                            Lisboa, Loures, Odivelas, Almada, Amadora, Sete Rios, Campo Grande, Alverca, Vila Franca de Xira, Carregado, Torres Novas, Leiria e Coimbra.
+                        </p>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100 text-center">
+                        <div class="bg-slate-900 text-white p-6 rounded-3xl shadow-lg">
+                            <p class="text-[10px] uppercase tracking-widest opacity-60 mb-2 font-bold">📲 Contactos para Reserva:</p>
+                            <p class="font-bold text-xl mb-1">📞 219 597 638 | 962 838 175</p>
+                            <p class="font-bold text-xl text-sky-400">📱 939 385 492</p>
+                            <p class="text-[10px] mt-4 opacity-50 uppercase tracking-widest">RNAVT 11763 | Lugares Limitados!</p>
                         </div>
-                        <button onclick="closeModal(); document.getElementById('contacto').scrollIntoView();" class="mt-4 text-sky-600 font-bold hover:underline">Pedir Reserva por Email</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Contacto e Pedido de Orçamento -->
+    <!-- CONTACTO & FORMULÁRIO (FORMSPREE) -->
     <section id="contacto" class="py-24 px-6 bg-slate-50">
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl">
-            <!-- Informações à Esquerda -->
             <div class="lg:w-1/3 p-12 bg-sky-900 text-white">
-                <h2 class="text-3xl font-bold mb-6 italic font-serif">Fale com a Maria</h2>
-                <p class="opacity-80 mb-10 leading-relaxed">Diga-me o seu destino de sonho e eu trato de todos os detalhes para a sua viagem ser inesquecível.</p>
+                <h2 class="text-3xl font-bold mb-6 italic font-serif text-white">Fale com a Maria</h2>
+                <p class="opacity-80 mb-10 leading-relaxed text-sm">Diga-me o seu destino de sonho e eu trato de todos os detalhes para a sua viagem ser inesquecível.</p>
                 <div class="space-y-6">
                     <div>
-                        <p class="text-xs uppercase tracking-widest opacity-60 mb-2">Telefones</p>
-                        <p class="font-bold text-lg">219 597 638</p>
-                        <p class="font-bold text-lg">962 838 175</p>
-                        <p class="font-bold text-lg text-sky-300">939 385 492</p>
+                        <p class="text-xs uppercase tracking-widest opacity-60 mb-2 font-bold">Telemóveis</p>
+                        <p class="font-bold">219 597 638</p>
+                        <p class="font-bold">962 838 175</p>
+                        <p class="font-bold text-sky-300">939 385 492</p>
                     </div>
                     <div>
-                        <p class="text-xs uppercase tracking-widest opacity-60 mb-2">Emails de Reserva</p>
+                        <p class="text-xs uppercase tracking-widest opacity-60 mb-2 font-bold">Emails</p>
                         <p class="font-bold text-sm">maria@passeiosdamaria.pt</p>
                         <p class="font-bold text-sm text-sky-300">reservas.passeiosdamaria@gmail.com</p>
-                    </div>
-                    <div class="pt-6 border-t border-white/10">
-                        <p class="text-[10px] uppercase tracking-tighter opacity-50">RNAVT 11763</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Formulário Real -->
             <div class="lg:w-2/3 p-12 bg-white">
                 <h3 class="text-2xl font-bold text-slate-800 mb-8">Pedir Orçamento Gratuito</h3>
-                
-                <!-- INTEGRAÇÃO COM FORMSPREE -->
-                <form action="https://formspree.io/f/reservas.passeiosdamaria@gmail.com" method="POST" class="space-y-6" id="quote-form">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold text-slate-400 uppercase">Nome Completo</label>
-                            <input type="text" name="nome" placeholder="Ex: João Silva" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all" required>
+                <!-- Integração Formspree -->
+                <form action="https://formspree.io/f/reservas.passeiosdamaria@gmail.com" method="POST" class="space-y-5">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Nome</label>
+                            <input type="text" name="nome" placeholder="Seu nome" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all" required>
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold text-slate-400 uppercase">Teu Email</label>
-                            <input type="email" name="_replyto" placeholder="Ex: joao@email.com" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all" required>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Email</label>
+                            <input type="email" name="_replyto" placeholder="seu@email.com" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all" required>
                         </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Telemóvel</label>
+                            <input type="tel" name="telemovel" placeholder="9xxxxxxxx" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Destino</label>
+                            <input type="text" name="destino" id="form-destino" placeholder="Ex: Douro, Açores..." class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all" required>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Notas Adicionais</label>
+                        <textarea name="mensagem" id="form-mensagem" placeholder="Quantas pessoas? Datas preferenciais?" rows="3" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all"></textarea>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold text-slate-400 uppercase">Telemóvel</label>
-                            <input type="tel" name="telefone" placeholder="9xx xxx xxx" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold text-slate-400 uppercase">Destino Pretendido</label>
-                            <input type="text" name="destino" id="form-destino" placeholder="Ex: Cruzeiro Douro / Açores" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all" required>
-                        </div>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label class="text-xs font-bold text-slate-400 uppercase">Detalhes Adicionais</label>
-                        <textarea name="mensagem" id="form-mensagem" placeholder="Diga-nos o número de pessoas, datas preferenciais ou pedidos especiais..." rows="4" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl outline-none focus:border-sky-500 transition-all"></textarea>
-                    </div>
-
-                    <!-- Configurações do Formspree -->
-                    <input type="hidden" name="_subject" value="Novo Pedido de Orçamento - Website Passeios da Maria">
-                    <input type="hidden" name="_next" value="https://passeiosdamaria.pt/sucesso"> <!-- Podes alterar este link se tiveres uma página de sucesso -->
+                    <!-- Assunto personalizado para o email -->
+                    <input type="hidden" name="_subject" value="Novo Pedido de Orçamento - Passeios da Maria">
                     
-                    <button type="submit" class="btn-coral text-white w-full py-5 rounded-2xl font-bold text-lg uppercase tracking-widest shadow-xl">
-                        Enviar Pedido de Orçamento
+                    <button type="submit" class="btn-coral text-white w-full py-5 rounded-2xl font-bold text-lg uppercase tracking-widest shadow-xl mt-4">
+                        Enviar Pedido
                     </button>
-                    <p class="text-[10px] text-center text-slate-400 italic">Ao enviar, concorda em ser contactado pela nossa equipa para fins de orçamento.</p>
+                    <p class="text-[10px] text-center text-slate-400 italic">Será contactado pela nossa equipa com a melhor proposta disponível.</p>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Toast de Confirmação (Simulado) -->
-    <div id="toast" class="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-[100] opacity-0 translate-y-10 transition-all duration-500 pointer-events-none">
-        <div class="bg-slate-900 text-white px-8 py-4 rounded-full shadow-2xl flex items-center space-x-3">
-            <span class="text-sky-400 text-xl">🚀</span>
-            <span id="toast-text" class="text-sm font-medium"></span>
-        </div>
-    </div>
-
-    <!-- Rodapé -->
+    <!-- RODAPÉ -->
     <footer class="bg-slate-950 text-white py-16 px-6 text-center">
-        <img src="https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpg" alt="Logo" class="h-16 mx-auto mb-6 opacity-90 rounded-lg bg-white p-2" onerror="this.style.display='none'">
-        <div class="mb-8">
-            <p class="text-slate-400 text-xs uppercase tracking-[0.2em] mb-2 font-bold">Contactos Oficiais</p>
-            <p class="text-sm">maria@passeiosdamaria.pt | reservas.passeiosdamaria@gmail.com</p>
-            <p class="text-sm mt-1">219 597 638 | 962 838 175 | 939 385 492</p>
-        </div>
-        <div class="border-t border-white/5 pt-8">
-            <p class="text-slate-600 text-[10px] uppercase tracking-widest">© 2024-2026 Passeios da Maria | RNAVT 11763</p>
-        </div>
+        <img src="https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpg" alt="Logo" class="h-14 mx-auto mb-6 opacity-90 rounded-lg bg-white p-1">
+        <p class="text-slate-500 text-[10px] uppercase tracking-[0.4em]">Passeios da Maria | RNAVT 11763</p>
     </footer>
 
     <script>
-        // Função para preencher automaticamente o formulário a partir da barra de pesquisa hero
+        // Lógica de Pré-preenchimento do formulário vindo do Hero
         function preFillAndContact() {
             const destino = document.getElementById('hero-destino').value;
             const data = document.getElementById('hero-data').value;
-            
             if (destino) {
                 document.getElementById('form-destino').value = destino;
                 document.getElementById('form-mensagem').value = `Pretendo informações para viagem em ${data || 'data a definir'}.`;
             }
-            
             document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
-            showAlert('Por favor, preencha os seus dados abaixo para enviarmos o orçamento.');
         }
 
-        function showAlert(msg) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-text').innerText = msg;
-            toast.classList.remove('opacity-0', 'translate-y-10');
-            toast.classList.add('opacity-100', 'translate-y-0');
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-10');
-                toast.classList.remove('opacity-100', 'translate-y-0');
-            }, 5000);
-        }
-
+        // Navegação entre secções/páginas (SPA)
         function showPage(pageId) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden-page'));
             const page = document.getElementById('page-' + pageId);
@@ -338,6 +314,7 @@
             }
         }
 
+        // Funções do Modal de Cruzeiros
         function openModal() {
             const modal = document.getElementById('cruise-modal');
             modal.classList.remove('invisible', 'opacity-0');
@@ -354,21 +331,14 @@
             }, 300);
         }
 
+        // Efeito do Header no Scroll
         window.addEventListener('scroll', () => {
             const navContainer = document.getElementById('nav-container');
-            const logo = document.getElementById('logo-img');
             if (window.scrollY > 50) {
                 navContainer.classList.replace('h-20', 'h-16');
-                if(logo) logo.style.height = "40px";
             } else {
                 navContainer.classList.replace('h-16', 'h-20');
-                if(logo) logo.style.height = "56px";
             }
-        });
-
-        // Fechar modal ao clicar fora
-        document.getElementById('cruise-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'cruise-modal') closeModal();
         });
     </script>
 </body>
