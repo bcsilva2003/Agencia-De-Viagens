@@ -366,18 +366,4 @@
         });
     </script>
 
-    🖼️ Logótipo e Imagens
-
-Para utilizar o logótipo alojado neste repositório em websites externos ou no próprio código HTML, deve utilizar o link direto (Raw) para evitar problemas de carregamento.
-
-Link Direto do Logo
-
-O link principal para a imagem LOGO.jpg é:
-https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpg
-
-Como usar no HTML:
-
-<img src="[https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpg](https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpg)" alt="Logo Passeios da Maria">
-
-</body>
-</html>
+    🌍 Passeios da Maria - Agência de ViagensBem-vindo ao repositório oficial da Passeios da Maria. Este projeto contém o website institucional e os ativos visuais para uma agência de viagens focada em experiências personalizadas, cruzeiros e roteiros culturais.🖼️ Ativos Visuais (Links Diretos)Para garantir que as imagens carregam corretamente no website (contornando as restrições de visualização padrão do GitHub), utilizamos os links Raw.ImagemFinalidadeLink Direto (Raw)LOGO.jpgLogótipo da Marcahttps://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpgDIA21.jpgCartaz Cruzeiro Dourohttps://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/0c383296b277449571b3b7c4fa4a3473924044fc/DIA21.jpg🚀 O Website (index.html)O site foi desenvolvido como uma SPA (Single Page Application) moderna, utilizando:Tailwind CSS: Para um design responsivo e elegante.JavaScript: Para navegação dinâmica entre secções e janelas modais.Google Fonts: Tipografia Montserrat e Playfair Display.Funcionalidades Implementadas:Página de Cruzeiros: Inclui uma secção dedicada a ofertas sazonais.Sistema de Modal: Ao clicar na imagem da oferta (DIA21.jpg), abre-se uma janela com todos os detalhes do itinerário.Responsividade: O site adapta-se perfeitamente a telemóveis e computadores.🚢 Oferta em Destaque: Cruzeiro no Douro 2026Informações Principais:📅 Data: 21 de Junho de 2026💰 Preço: 119€ por pessoa📍 Itinerário: Barca d’Alva → Peso da Régua🚌 Saídas: Lisboa, Loures, Odivelas, Almada, Amadora, Sete Rios, Campo Grande, Alverca, Vila Franca de Xira, Carregado, Torres Novas, Leiria e Coimbra.🛠️ Como Utilizar este RepositórioImagens: Sempre que adicionar uma imagem nova, obtenha o link "Raw" para usar no atributo src das tags <img> no HTML.Edição: O ficheiro index.html contém todo o estilo e lógica. As secções estão identificadas com IDs (ex: page-home, page-cruzeiros).📞 Contactos OficiaisTelefones: 219 597 638 | 962 838 175Licença: RNAVT 11763Mantido por bcsilva2003
