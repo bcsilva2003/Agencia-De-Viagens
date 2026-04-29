@@ -366,76 +366,92 @@
         });
     </script>
 
-🌍 Passeios da Maria - Agência de Viagens
+🌍 Passeios da Maria - Agência de Viagens (RNAVT 11763)
 
-Bem-vindo ao repositório oficial da Passeios da Maria. Este projeto contém o website institucional e os ativos visuais para uma agência de viagens focada em experiências personalizadas, cruzeiros e roteiros culturais.
+Este repositório contém o código-fonte e a documentação do website oficial da Passeios da Maria, uma agência de viagens focada em proporcionar experiências autênticas e personalizadas. O site foi desenhado para ser uma ferramenta de conversão direta, facilitando o contacto entre o cliente e a agência.
 
-🖼️ Ativos Visuais (Links Diretos)
+🚀 Tecnologias Utilizadas
 
-Para garantir que as imagens carregam corretamente no website (contornando as restrições de visualização padrão do GitHub), utilizamos os links Raw.
+O projeto foi construído com foco em performance, estética premium e simplicidade de manutenção:
 
-Imagem
+HTML5 & CSS3: Estrutura semântica e moderna.
 
-Finalidade
+Tailwind CSS: Framework de estilização via CDN para um design responsivo e de carregamento rápido.
 
-Link Direto (Raw)
+JavaScript (Vanilla): Lógica de navegação SPA (Single Page Application), gestão de modais e manipulação dinâmica de formulários.
 
-LOGO.jpg
+Google Fonts: Utilização das famílias Montserrat (corpo) e Playfair Display (títulos) para um aspeto sofisticado.
 
-Logótipo da Marca
+Formspree: Serviço de backend para gestão de formulários sem necessidade de servidor próprio.
+
+📸 Ativos Visuais (Links Externos)
+
+Para garantir a consistência visual, utilizamos imagens alojadas no GitHub e Unsplash:
+
+Ativo
+
+Origem
+
+Link
+
+Logótipo
+
+GitHub (Raw)
 
 https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/main/LOGO.jpg
 
-DIA21.jpg
+Cartaz Cruzeiro
 
-Cartaz Cruzeiro Douro
+GitHub (Raw)
 
 https://raw.githubusercontent.com/bcsilva2003/Agencia-De-Viagens/0c383296b277449571b3b7c4fa4a3473924044fc/DIA21.jpg
 
-🚀 O Website (index.html)
+Hero Background
 
-O site foi desenvolvido como uma SPA (Single Page Application) moderna, utilizando:
+Unsplash
 
-Tailwind CSS: Design responsivo e premium.
+Imagem de paisagem de alta resolução (focada em viagens).
 
-JavaScript: Navegação dinâmica e lógica de pré-preenchimento de formulários.
+🚢 Funcionalidades em Destaque
 
-Formspree: Integração para envio de formulários diretamente para o email de reservas.
+1. Sistema de Reservas (Formspree)
 
-Funcionalidades Implementadas:
+O formulário de contacto está totalmente integrado.
 
-Formulário de Orçamento Ativo: Sistema configurado para enviar pedidos para reservas.passeiosdamaria@gmail.com.
+Destinatário: reservas.passeiosdamaria@gmail.com
 
-Página de Cruzeiros: Secção dedicada a ofertas sazonais com detalhe em modal.
+Campos: Nome, Email, Telemóvel, Destino e Mensagem Personalizada.
 
-Integração Inteligente: A barra de pesquisa inicial preenche automaticamente o formulário de contacto para facilitar a conversão.
+Automatização: Se o utilizador pesquisar um destino na barra inicial (Hero), o formulário é pré-preenchido automaticamente ao clicar em "Descobrir".
 
-Responsividade Total: Otimizado para telemóveis, tablets e desktop.
+2. Oferta Especial: Cruzeiro no Douro 2026
 
-🚢 Oferta em Destaque: Cruzeiro no Douro 2026
+Uma secção dedicada (Página de Cruzeiros) detalha a oferta de 21 de Junho de 2026:
 
-Informações Principais:
+Preço: 119€/pessoa.
 
-📅 Data: 21 de Junho de 2026
+Itinerário: Navegação de Barca d’Alva para o Peso da Régua.
 
-💰 Preço: 119€ por pessoa
+Logística: Inclui pequeno-almoço, almoço a bordo e transporte de autocarro a partir de mais de 10 localidades em Portugal.
 
-📍 Itinerário: Barca d’Alva → Peso da Régua
+3. Navegação SPA
 
-🚌 Saídas: Lisboa, Loures, Odivelas, Almada, Amadora, Sete Rios, Campo Grande, Alverca, Vila Franca de Xira, Carregado, Torres Novas, Leiria e Coimbra.
+O site carrega todo o conteúdo de uma vez e utiliza JavaScript para alternar entre as vistas ("Início" e "Cruzeiros"), proporcionando uma experiência de utilizador fluida e sem recarregamentos de página.
 
-🛠️ Como Utilizar este Repositório
+🛠️ Como Atualizar o Site
 
-Ativação do Formulário: Na primeira submissão de teste através do site, o Formspree enviará um email de confirmação para o endereço de reservas. É necessário clicar no link desse email para ativar o envio automático de mensagens.
+Alterar Preços ou Datas: Localize o index.html e procure pela secção id="page-cruzeiros". Os valores estão inseridos em tags HTML simples para fácil edição.
 
-Edição: O ficheiro index.html contém todo o estilo e lógica. As secções estão identificadas com IDs (ex: page-home, page-cruzeiros).
+Ativar o Formulário: Após o primeiro envio através do site, o Formspree enviará um email de ativação para a Maria. É obrigatório clicar no botão de confirmação nesse email para começar a receber os pedidos dos clientes.
 
-📞 Contactos Oficiais
+Novas Imagens: Substitua os links no atributo src das tags <img> ou nos estilos background-image no CSS.
+
+📞 Canais de Contacto Direto
 
 Telefones: 219 597 638 | 962 838 175 | 939 385 492
 
 Emails: maria@passeiosdamaria.pt | reservas.passeiosdamaria@gmail.com
 
-Licença: RNAVT 11763
+Licença Governamental: RNAVT 11763
 
-Mantido por bcsilva2003
+Projeto desenvolvido para a Passeios da Maria. Todos os direitos reservados.
